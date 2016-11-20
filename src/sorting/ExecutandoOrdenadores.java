@@ -46,25 +46,25 @@ public class ExecutandoOrdenadores {
 		executeSortingAlgorithm(merge);
 		long lEndTimeMerge = System.nanoTime();
 		long outputMerge = lEndTimeMerge - lStartTimeMerge;
-		System.out.println("Elapsed time in milliseconds: " + outputMerge / 1000000);
+		System.out.println("merge " + outputMerge / 1000000);
 
 		long lStartTimeQuick = System.nanoTime();
 		executeSortingAlgorithm(quick);
 		long lEndTimeQuick = System.nanoTime();
 		long outputQuick = lEndTimeQuick - lStartTimeQuick;
-		System.out.println("Elapsed time in milliseconds: " + outputQuick / 1000000);
+		System.out.println("quick " + outputQuick / 1000000);
 
 		long lStartTimeSelection = System.nanoTime();
 		executeSortingAlgorithm(selection);
 		long lEndTimeSelection = System.nanoTime();
 		long outputSelection = lEndTimeSelection - lStartTimeSelection;
-		System.out.println("Elapsed time in milliseconds: " + outputSelection / 1000000);
+		System.out.println("selection " + outputSelection / 1000000);
 
 		long lStartTimeInsertion = System.nanoTime();
 		executeSortingAlgorithm(insertion);
 		long lEndTimeInsertion = System.nanoTime();
 		long outputInsertion = lEndTimeInsertion - lStartTimeInsertion;
-		System.out.println("Elapsed time in milliseconds: " + outputInsertion / 1000000);
+		System.out.println("insertion " + outputInsertion / 1000000);
 
 	}
 	
