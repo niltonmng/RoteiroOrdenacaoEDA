@@ -6,7 +6,8 @@ public class MergeSort implements Sorting {
 	public void sort(int[] elements) {
 		this.mergeSort(elements, 0, elements.length-1);
 	}
-
+	
+	
 	private void mergeSort(int[] v, int ini, int fim) {
 
 		if (ini < fim) {

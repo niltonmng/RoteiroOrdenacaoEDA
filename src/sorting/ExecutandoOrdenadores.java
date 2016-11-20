@@ -6,20 +6,41 @@ import java.util.concurrent.TimeUnit;
 
 public class ExecutandoOrdenadores {
 
-
-	private static Sorting merge;
-	private static Sorting quick;
-	private static Sorting selection;
-	private static Sorting insertion;
-
-	public ExecutandoOrdenadores(){
-		ExecutandoOrdenadores.merge = new MergeSort();
-		ExecutandoOrdenadores.quick = new QuickSort();
-		ExecutandoOrdenadores.selection = new SelectionSort();
-		ExecutandoOrdenadores.insertion = new InsertionSort();
-	}
-
 	public static void main(String[] args) {
+		
+		Sorting merge = new MergeSort();		
+		Sorting quick = new QuickSort();
+		Sorting selection = new SelectionSort();
+		Sorting insertion = new InsertionSort();
+
+		ArrayList<int[]> nova = listaNumerosRandomicos();
+		for (int i = 0; i < nova.size(); i++) {
+			
+			long lStartTimeMerge = System.nanoTime();
+			merge.sort(nova.get(i));
+			long lEndTimeMerge = System.nanoTime();
+			long outputMerge = lEndTimeMerge - lStartTimeMerge;
+			System.out.println("merge " + outputMerge + " " + nova.get(i).length);
+
+			//long lStartTimeQuick = System.nanoTime();
+			//quick.sort(nova.get(i));
+			//long lEndTimeQuick = System.nanoTime();
+			//long outputQuick = lEndTimeQuick - lStartTimeQuick;
+			//System.out.println("quick " + " " + nova.get(i).length);
+
+			long lStartTimeSelection = System.nanoTime();
+			selection.sort(nova.get(i));
+			long lEndTimeSelection = System.nanoTime();
+			long outputSelection = lEndTimeSelection - lStartTimeSelection;
+			System.out.println("selection " + outputSelection + " " + nova.get(i).length);
+
+			long lStartTimeInsertion = System.nanoTime();
+			insertion.sort(nova.get(i));
+			long lEndTimeInsertion = System.nanoTime();
+			long outputInsertion = lEndTimeInsertion - lStartTimeInsertion;
+			System.out.println("insertion " + outputInsertion + " " + nova.get(i).length);
+		}
+		
 
 		long lStartTimeMerge = System.nanoTime();
 		executeSortingAlgorithm(merge);
@@ -45,21 +66,23 @@ public class ExecutandoOrdenadores {
 		long outputInsertion = lEndTimeInsertion - lStartTimeInsertion;
 		System.out.println("Elapsed time in milliseconds: " + outputInsertion / 1000000);
 
-
-
-
-
 	}
+	
+	private static void calculation() throws InterruptedException {
+        //Sleep 0 seconds
+        TimeUnit.SECONDS.sleep(0);
+
+    }
 
 
 	public static int[] vetorRandom(int tamanho){
-		int[] resultado = new int[tamanho];
+		int[] vetor = new int[tamanho];
 		Random r = new Random();
 		for (int i = 0; i < tamanho; i++) {
-			int random = r.nextInt(100);
-			resultado[i] = random;
+			int numeroRandom = r.nextInt(100);
+			vetor[i] = numeroRandom;
 		}
-		return resultado;
+		return vetor;
 	}
 
 
@@ -71,31 +94,29 @@ public class ExecutandoOrdenadores {
 	}
 
 
-}
-
-
-
-
-
-/*
- * Cria um ArrayList<int[]> com 21 elementos do tipo array de inteiros,
- * que possuem de 20000 a 40000 elementos, todos gerados randomicamente.
- * @return
-
-public static ArrayList<int[]> listaNumerosRandomicos(){ 
-	Random randomGenerator = new Random();
-	ArrayList<int[]> lista = new ArrayList<int[]>();
-
-	int tamanho = 20000;
-	for (int i = 0; i <= 20; i++) {
-		int[] v = new int[tamanho];
-		for (int j = 0; j < v.length; j++){
-			int randomInt = randomGenerator.nextInt(100);
-			v[j] = randomInt;
+	/**
+	 * Cria um ArrayList<int[]> com 21 elementos do tipo array de inteiros,
+	 * que possuem de 20000 a 40000 elementos, todos gerados randomicamente.
+	 * @return
+	 */
+	public static ArrayList<int[]> listaNumerosRandomicos(){ 
+		Random randomGenerator = new Random();
+		ArrayList<int[]> lista = new ArrayList<int[]>();
+		
+		int tamanho = 20000;
+		for (int i = 0; i <= 20; i++) {
+			int[] v = new int[tamanho];
+			for (int j = 0; j < v.length; j++){
+				int randomInt = randomGenerator.nextInt(100);
+				v[j] = randomInt;
+			}
+			tamanho += 1000;
+			lista.add(v);
 		}
-		tamanho += 1000;
-		lista.add(v);
+		return lista;
 	}
-	return lista;
 }
- */
+
+
+
+

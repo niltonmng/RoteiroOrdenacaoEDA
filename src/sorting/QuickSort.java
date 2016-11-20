@@ -4,7 +4,7 @@ public class QuickSort implements Sorting {
 
 	@Override
 	public void sort(int[] elements) {
-		this.quickSort(elements, 0, - 1);
+		this.quickSort(elements, 0, elements.length - 1);
 	}
 	
 	
