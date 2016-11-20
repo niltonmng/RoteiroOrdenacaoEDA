@@ -45,17 +45,14 @@ public class MergeSort implements Sorting {
 			k++;
 
 		}
-
-		// primeira metade não foi toda consumida: fazer append de todos
-		// os elementos da primeira metade
+		
+		// append do elementos do primeiro array restante
 		while (i <= med) {
 			v[k] = helper[i];
 			k+=1;
 			i+=1;
 		}
-
-		// segunda metade não foi toda consumida: fazer append de todos
-		// os elementos da segunda metade
+		// append do elementos do segundo array restante
 		while (j <= fim) {
 			v[k] = helper[j];
 			k+=1;
